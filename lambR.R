@@ -1,4 +1,7 @@
 source("app/application.R")
 
 App <- App$new(getwd())
-App$run()
+Router <- App$boot()
+
+source("resources/bootstrap.R")
+Router$run(App$environments$APP_HOST, App$environments$APP_PORT)

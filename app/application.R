@@ -1,11 +1,17 @@
 library(plumber)
 library(R6)
 library(readr)
+library(jsonlite)
+library(plyr)
+library(dplyr)
+
+options(stringsAsFactors = F)
 
 readRenviron("./.env")
 
 App <- R6Class ("Application", list(
     real_path = NA,
+    router = NULL,
     environments = list(),
     is_production = list(),
     
@@ -29,12 +35,11 @@ App <- R6Class ("Application", list(
             DB_TYPE = Sys.getenv(paste0(enviroment_type, "DB_TYPE")),
             ENV_TYPE = Sys.getenv(paste0(enviroment_type, "ENV_TYPE")),
             APP_HOST = Sys.getenv(paste0(enviroment_type, "APP_HOST")),
-            APP_PORT = Sys.getenv(paste0(enviroment_type, "APP_PORT"))
+            APP_PORT = as.numeric(Sys.getenv(paste0(enviroment_type, "APP_PORT")))
         )
     },
     
-    run = function () {
-        routes <- plumb(paste0(self$real_path, "/resources/bootstrap.R"))
-        routes$run(self$environments$APP_HOST, self$environments$APP_PORT)
+    boot = function () {
+        self$router <- plumber$new()
     }
 ))
