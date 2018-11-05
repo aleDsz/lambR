@@ -1,3 +1,3 @@
-HomeController <- R6Class("HomeController", inherit = "Controller", list(
+HomeController <- R6Class("HomeController", inherit = Controller, list(
     
 ))
