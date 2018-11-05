@@ -41,7 +41,7 @@ Router <- R6Class("Router",
         plumber = NULL,
         
         make_route = function (route_method, route_name, route_path, is_html) {
-            private$plumber$handle(route_method, route_path, function () {
+            private$plumber$handle(route_method, route_path, function (req, res) {
                 view_name <- tolower(gsub(".", "/", gsub("_", "/", route_name, fixed = T), fixed = T))
                 route_name <- gsub(" ", "", str_to_title(gsub(".", " ", gsub("_", " ", route_name, fixed = T), fixed = T)), fixed = T)
 
@@ -59,14 +59,13 @@ Router <- R6Class("Router",
                 model <- NULL
 
                 controller <- eval(parse(
-                    text = paste0(controller_name, "$new(model, NULL, NULL)")
-                    # text = paste0(controller_name, "$new(model, req, res)")
+                    text = paste0(controller_name, "$new(model, req, res)")
                 ))
 
                 response <- controller$boot()
 
                 if (is_html) {
-                    # res$setHeader("Content-Type", "text/html; charset=utf-8")
+                    res$setHeader("Content-Type", "text/html; charset=utf-8")
                     
                     if (file.exists(paste0("./resources/view/", view_name, ".html"))) {
                         view <- read_file(paste0("./resources/view/", view_name, ".html"))
@@ -76,7 +75,7 @@ Router <- R6Class("Router",
 
                     return (self$processor$output(read_file("./public/index.html"), html))
                 } else {
-                    # res$setHeader("Content-Type", "application/json; charset=utf-8")
+                    res$setHeader("Content-Type", "application/json; charset=utf-8")
 
                     return (response)
                 }
