@@ -81,7 +81,7 @@ Requires: pkgconfig, rlang, vctrs
 Package: httpuv
 Source: CRAN
 Version: 1.5.4
-Hash: 8c8e24cfefa0977e389e458129cf96e3
+Hash: a8a32db22832dada8114bbc1f9b3d337
 Requires: BH, R6, Rcpp, later, promises
 
 Package: jsonlite
@@ -92,7 +92,7 @@ Hash: dec188bcfae1bb0fba6731c9aee6a9d2
 Package: later
 Source: CRAN
 Version: 1.1.0.1
-Hash: 0c6d0dbad70a1b8698919b5d70e8a430
+Hash: ae753c314927d7f0311265d6db8a682c
 Requires: BH, Rcpp, rlang
 
 Package: lifecycle
@@ -136,13 +136,13 @@ Requires: R6, crayon, httpuv, jsonlite, stringi
 Package: plyr
 Source: CRAN
 Version: 1.8.6
-Hash: 843fdf947862e66a51fc94b930519abc
+Hash: bcc6d45ab13c462b5fb12f7a9b9fe444
 Requires: Rcpp
 
 Package: promises
 Source: CRAN
 Version: 1.1.1
-Hash: 0f58aaef1b398b33f902cd50cb50d2d0
+Hash: 56db47b53e7d36bb3d2bd80fbeceb62b
 Requires: R6, Rcpp, later, magrittr, rlang
 
 Package: purrr
@@ -154,7 +154,7 @@ Requires: magrittr, rlang
 Package: readr
 Source: CRAN
 Version: 1.3.1
-Hash: b38fa28b383389095863c05fa54de9b8
+Hash: b114fb7b992c992da1b001f62fafba8b
 Requires: BH, R6, Rcpp, clipr, crayon, hms, tibble
 
 Package: rlang
