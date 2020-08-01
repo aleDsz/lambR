@@ -3,6 +3,7 @@ Router <- R6Class("Router",
     routes = list(),
     
     initialize = function (plumber, App) {
+			private$processor <- WebProcessor$new(App)
       private$plumber <- plumber
       private$App <- App
 
@@ -43,6 +44,7 @@ Router <- R6Class("Router",
   private = list(
     App = NULL,
     plumber = NULL,
+		processor = NULL,
     
     make_route = function (route_method, route_name, route_path, is_html) {
       private$plumber$handle(route_method, route_path, function (req, res) {
@@ -75,8 +77,12 @@ Router <- R6Class("Router",
             view <- read_file(paste0("./resources/views/", view_name, ".html"))
           }
 
+          html <- private$processor$process_html(view, response)
+          res$body <- private$processor$output(read_file("./public/index.html"), html)
+					return (res)
         } else {
           res$setHeader("Content-Type", "application/json; charset=utf-8")
+					res$body <- response
           return (res)
         }
       })
