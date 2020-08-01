@@ -29,6 +29,7 @@ App <- R6Class ("Application",
       self$real_path <- real_path
       
       self$environments <- list (
+				LEVEL = Sys.getenv(paste0(enviroment_type, "LEVEL")),
         DB_NAME = Sys.getenv(paste0(enviroment_type, "DB_NAME")),
         DB_HOST = Sys.getenv(paste0(enviroment_type, "DB_HOST")),
         DB_PORT = Sys.getenv(paste0(enviroment_type, "DB_PORT")),
@@ -40,6 +41,8 @@ App <- R6Class ("Application",
         APP_PORT = as.numeric(Sys.getenv(paste0(enviroment_type, "APP_PORT")))
       )
 
+			logging::setLevel(self$environments$LEVEL)
+      
       private$plumber <- plumber$new()
       private$autoload()
     },
@@ -70,6 +73,7 @@ App <- R6Class ("Application",
     },
     
     autoload = function () {
+      source("./utils/logger.R")
       source("./app/web_processor.R")
       source("./app/router.R")
       source("./app/controller.R")

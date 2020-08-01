@@ -5,6 +5,11 @@ Router <- R6Class("Router",
     initialize = function (plumber, App) {
       private$plumber <- plumber
       private$App <- App
+
+			private$plumber$registerHook("preroute", function (req) {
+				Logger$info(paste0("Routing a request for ", req$PATH_INFO))
+			})
+      
       private$plumber$filter("setHeaders", function (res) {
         res$setHeader("Access-Control-Allow-Origin", "*")
         res$setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS")
@@ -45,6 +50,11 @@ Router <- R6Class("Router",
         route_name <- gsub(" ", "", str_to_title(gsub(".", " ", gsub("_", " ", route_name, fixed = T), fixed = T)), fixed = T)
         controller_name <- paste0(route_name, "Controller")
         model_name <- route_name
+
+				Logger$debug("View Name:", view_name)
+				Logger$debug("Route Name:", route_name)
+				Logger$debug("Controller Name:", controller_name)
+				Logger$debug("Model Name:", model_name)
 
         model <- NULL
         
