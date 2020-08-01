@@ -1,0 +1,11 @@
+Package: app
+Imports:
+    plumber,
+    dplyr,
+    plyr,
+    readr,
+    jsonlite,
+    stringi,
+    stringr,
+    R6,
+    logging
