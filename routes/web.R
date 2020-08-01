@@ -1,1 +1,1 @@
-Router$make_web_route("home", "/")
+router$make_web_route("home", "/")
