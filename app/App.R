@@ -85,6 +85,7 @@ App <- R6Class ("Application",
       source("./app/web_processor.R")
       source("./app/router.R")
       source("./app/controller.R")
+      source("./app/model.R")
       
       folders <- c(
         "./app/controllers/",
