@@ -1,6 +1,8 @@
-source("app/App.R")
-
-App <- App$new(getwd())
-Router <- App$get_router(App)
-
-source("resources/bootstrap.R")
+# lambR project
+# 
+# Stating the application, autoloading all dependencies
+if (requireNamespace("readr", quietly=TRUE)) {
+	source("app/autoload.R")
+} else {
+  message("Install readr to load all dependencies")
+}
