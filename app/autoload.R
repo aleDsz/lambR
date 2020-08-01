@@ -14,6 +14,7 @@ load_dependencies <- function (is_everything_installed) {
 		}
 	} else {
 		jetpack::install()
+	    load_dependencies()
 	}
 }
 
