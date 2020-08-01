@@ -41,6 +41,14 @@ App <- R6Class ("Application",
         APP_PORT = as.numeric(Sys.getenv(paste0(enviroment_type, "APP_PORT")))
       )
 
+			self$environments$BASE_URL <- paste0(
+				"http://",
+				self$environments$APP_HOST,
+				":",
+				self$environments$APP_PORT,
+				"/"
+			)
+
 			logging::setLevel(self$environments$LEVEL)
       
       private$plumber <- plumber$new()
