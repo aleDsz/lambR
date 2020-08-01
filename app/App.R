@@ -19,7 +19,7 @@ App <- R6Class ("Application",
       self$real_path <- real_path
       
       self$environments <- list (
-				LEVEL = Sys.getenv(paste0(enviroment_type, "LEVEL")),
+	    LEVEL = Sys.getenv(paste0(enviroment_type, "LEVEL")),
         DB_NAME = Sys.getenv(paste0(enviroment_type, "DB_NAME")),
         DB_HOST = Sys.getenv(paste0(enviroment_type, "DB_HOST")),
         DB_PORT = Sys.getenv(paste0(enviroment_type, "DB_PORT")),

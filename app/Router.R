@@ -7,9 +7,9 @@ Router <- R6Class("Router",
       private$plumber <- plumber
       private$App <- App
 
-			private$plumber$registerHook("preroute", function (req) {
-				Logger$info(paste0("Routing a request for ", req$PATH_INFO))
-			})
+    	private$plumber$registerHook("preroute", function (req) {
+    		Logger$info(paste0("Routing a request for ", req$PATH_INFO))
+    	})
       
       private$plumber$filter("setHeaders", function (res) {
         res$setHeader("Access-Control-Allow-Origin", "*")
@@ -37,7 +37,7 @@ Router <- R6Class("Router",
     },
     
     run = function (api_host, api_port) {
-      private$plumber$run(api_host, api_port)
+      private$plumber$run(api_host, api_port, swagger = FALSE)
     }
   ),
   
