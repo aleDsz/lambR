@@ -1,13 +1,3 @@
-library(plumber)
-library(R6)
-library(readr)
-library(jsonlite)
-library(plyr)
-library(dplyr)
-library(stringr)
-
-options(stringsAsFactors = F)
-
 readRenviron("./.env")
 
 App <- R6Class ("Application",
